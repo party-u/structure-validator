@@ -4,6 +4,7 @@ A lightweight, generic validation library for Go that makes complex structure va
 
 [![Go Report Card](https://goreportcard.com/badge/github.com/party-u/structure-validator)](https://goreportcard.com/report/github.com/party-u/structure-validator)
 [![GoDoc](https://godoc.org/github.com/party-u/structure-validator?status.svg)](https://godoc.org/github.com/party-u/structure-validator)
+[![Latest Release](https://img.shields.io/github/v/release/party-u/structure-validator)](https://github.com/party-u/structure-validator/releases)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
 ## Overview
