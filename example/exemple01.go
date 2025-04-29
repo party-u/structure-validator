@@ -2,7 +2,7 @@ package example
 
 import (
 	"fmt"
-	. "github.com/party-u/structure-validator.git"
+	. "github.com/party-u/structure-validator"
 	"time"
 )
 
