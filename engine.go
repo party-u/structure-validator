@@ -59,15 +59,15 @@ func WithMaxRules(maxRules int) Config {
 // WithTimeout sets the timeout duration for EngineConfig. Defaults to 30 seconds if the provided duration is <= 0.
 func WithTimeout(timeout time.Duration) Config {
 	return func(config *EngineConfig) {
-		if timeout <= 0 {
-			timeout = time.Second * 30
+		if timeout < 0 {
+			panic("invalid timeout")
 		}
 		config.Timeout = timeout
 	}
 }
 
-// NewAnalyzer creates a new RuleEngine instance with a configurable set of rules for processing items of generic type T.
-func NewAnalyzer[T any](config *EngineConfig, rules ...Rule[T]) RuleEngine[T] {
+// NewRuleEngine creates a new RuleEngine instance with a configurable set of rules for processing items of generic type T.
+func NewRuleEngine[T any](config *EngineConfig, rules ...Rule[T]) RuleEngine[T] {
 	anz := &ruleEngine[T]{
 		r:      make([]Rule[T], 0, config.MaxRules),
 		config: config,

@@ -30,7 +30,7 @@ func simpleExample() {
 		WithTimeout(time.Second),
 	)
 
-	anz := NewAnalyzer(conf, rule1)
+	anz := NewRuleEngine(conf, rule1)
 
 	result := NewRuleValidator(anz).Analyze("aaaaaaaaa")
 

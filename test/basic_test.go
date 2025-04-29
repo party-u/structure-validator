@@ -29,7 +29,7 @@ func TestBasicValidator(t *testing.T) {
 		WithTimeout(time.Second),
 	)
 
-	anz := NewAnalyzer(conf, maxLengthRule)
+	anz := NewRuleEngine(conf, maxLengthRule)
 
 	result := NewRuleValidator(anz).Analyze("aaaaaaaaa")
 

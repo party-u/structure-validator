@@ -1,6 +1,9 @@
 package structure_validator
 
-import "context"
+import (
+	"context"
+	"time"
+)
 
 // RuleValidator defines an interface for validating rules against a given type T and returning a list of RuleErrors.
 type RuleValidator[T any] interface {
@@ -18,8 +21,16 @@ type ruleValidator[T any] struct {
 func (r *ruleValidator[T]) Analyze(value T) []*RuleError {
 	var errors []*RuleError
 
+	var t time.Duration
 	cfg := r.anz.Config()
-	ctx, cancel := context.WithTimeout(context.Background(), cfg.Timeout)
+
+	if cfg.Timeout == 0 {
+		t = time.Second * 5
+	} else {
+		t = cfg.Timeout
+	}
+
+	ctx, cancel := context.WithTimeout(context.Background(), t)
 	defer cancel()
 
 	resultChan := make(chan *RuleError)
