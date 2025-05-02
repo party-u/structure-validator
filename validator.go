@@ -21,13 +21,12 @@ type ruleValidator[T any] struct {
 func (r *ruleValidator[T]) Analyze(value T) []*RuleError {
 	var errors []*RuleError
 
-	var t time.Duration
 	cfg := r.anz.Config()
 
-	if cfg.Timeout == 0 {
+	t := cfg.Timeout
+
+	if t == 0 {
 		t = time.Second * 5
-	} else {
-		t = cfg.Timeout
 	}
 
 	ctx, cancel := context.WithTimeout(context.Background(), t)
